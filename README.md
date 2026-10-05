@@ -14,6 +14,8 @@ The skill grew out of building Ormitar for [Fóir](https://foir.io), with [Bloba
 
 ## turtleneck
 
+<img src="turtleneck/media/turtleneck.svg" alt="A sketch of a black turtleneck jumper with no head and one fist raised." width="220">
+
 [turtleneck](turtleneck) gives your coding agent a process for work on a big project, from the first analysis through to production. The agent writes an RFC before any ticket is filed. For each change it drives the real app as a smoke test, then hands you a short list of what to check yourself.
 
 It comes from work on large enterprise software projects. Your project's commands go in a `turtleneck.md` profile, which the skill writes on its first run.

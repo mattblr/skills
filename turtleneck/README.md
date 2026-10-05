@@ -2,6 +2,8 @@
 
 Software architects never got a uniform. Building architects have the black turtleneck and round glasses, so this skill borrows theirs.
 
+<img src="media/turtleneck.svg" alt="A sketch of a black turtleneck jumper with no head and one fist raised." width="260">
+
 turtleneck gives your coding agent a process for work on a big project, from the first analysis through to production. It suits projects with several repositories or more than one agent working at once, where a change can pass its tests and still be broken when someone opens the app.
 
 ## What it does
