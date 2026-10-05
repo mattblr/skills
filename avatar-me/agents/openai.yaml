@@ -1,0 +1,4 @@
+interface:
+  display_name: "avatar-me"
+  short_description: "Turn your brand assets into animated user avatars"
+  default_prompt: "Use $avatar-me to find a character in this codebase's brand assets and build an independent animated avatar component."
