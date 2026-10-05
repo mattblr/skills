@@ -22,4 +22,16 @@ mkdir -p ~/.codex/skills
 cp -R skills/avatar-me ~/.codex/skills/avatar-me
 ```
 
+For Claude Code, install it for your user:
+
+```sh
+mkdir -p ~/.claude/skills
+cp -R skills/avatar-me ~/.claude/skills/avatar-me
+```
+
+Or copy `avatar-me` into `.claude/skills/avatar-me` inside a project to share it with that project's contributors. In Claude Code, invoke it with `/avatar-me`, followed by what you want to build. For example:
+
+> /avatar-me Make a character from our logo, with a few variations for user profiles. Show me the resting pose and a signature animation first.
+
+
 Skill instructions are MIT licensed. The Fóir and Ormitar artwork illustrates the case study and remains brand material; see [LICENSE](LICENSE).

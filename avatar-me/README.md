@@ -16,6 +16,18 @@ mkdir -p ~/.codex/skills
 cp -R skills/avatar-me ~/.codex/skills/avatar-me
 ```
 
+For Claude Code, install it for your user:
+
+```sh
+mkdir -p ~/.claude/skills
+cp -R skills/avatar-me ~/.claude/skills/avatar-me
+```
+
+Or copy `avatar-me` into `.claude/skills/avatar-me` inside a project to share it with that project's contributors. In Claude Code, invoke it with `/avatar-me`, followed by what you want to build. For example:
+
+> /avatar-me Make a character from our logo, with a few variations for user profiles. Show me the resting pose and a signature animation first.
+
+
 Then ask:
 
 > Use $avatar-me to make user avatars from this project's logo and colour palette. Show me a few directions first, then build the one we choose. I'd like a small profile avatar and a larger character for the chat window.
