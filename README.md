@@ -10,7 +10,7 @@ You've probably seen apps with those fun little avatars for each user. [avatar-m
 
 The skill grew out of building Ormitar for [Fóir](https://foir.io), with [Blobatar by Alain00](https://github.com/Alain00/blobatar) as the original inspiration. It guides the agent through finding a character, choosing a signature gesture, and building an independent component in your project.
 
-[See the design process and installation instructions](avatar-me/README.md), or [read about it on mattblr.com](https://mattblr.com/skills/avatar-me).
+[See the design process and installation instructions](avatar-me/README.md), or [see the page preview](https://preview.mattblr.com/skills/avatar-me).
 
 ## Install a skill
 
