@@ -1,0 +1,4 @@
+interface:
+  display_name: "turtleneck"
+  short_description: "Shape, deliver and track work on a large project"
+  default_prompt: "Use $turtleneck to read this project's profile, then pick up the next ticket and take it through to my smoke list."

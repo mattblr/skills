@@ -12,6 +12,14 @@ The skill grew out of building Ormitar for [Fóir](https://foir.io), with [Bloba
 
 [See the design process and installation instructions](avatar-me/README.md), or [read about it on mattblr.com](https://mattblr.com/skills/avatar-me).
 
+## turtleneck
+
+[turtleneck](turtleneck) gives your coding agent a process for work on a big project, from the first analysis through to production. The agent writes an RFC before any ticket is filed. For each change it drives the real app as a smoke test, then hands you a short list of what to check yourself.
+
+It comes from work on large enterprise software projects. Your project's commands go in a `turtleneck.md` profile, which the skill writes on its first run.
+
+[See the steps and installation instructions](turtleneck/README.md).
+
 ## Install a skill
 
 Clone this repository and copy the folder for the skill you want into your agent's skills directory. For Codex:

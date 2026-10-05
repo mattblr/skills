@@ -8,6 +8,8 @@ Claude Code discovers personal skills in `~/.claude/skills/<name>/SKILL.md` and 
 
 For avatar-me, preserve the requirement for an independent component in the target project's stack. The Ormitar media documents the example that informed the skill. Do not turn it into a required visual style or add a dependency on Ormitar or Blobatar. Keep the signature animation suggestions original; do not add Ormitar's roll.
 
+For turtleneck, keep the skill free of any one project's details. Commands, hosts, branch names and tracker ids belong in a project's own `turtleneck.md` profile. Keep all three parts and every step of the delivery loop in `SKILL.md`, with the detail in `references/`. `references/why.md` gives the failure behind each step. Describe where the steps came from in general terms only, and do not name a project in it.
+
 Use ordinary, specific language in documentation. Describe what a skill does and what the reader should do next. Keep inspiration credits and distinguish reconstructed design studies from recordings. Check local links, frontmatter, referenced files, and any runnable examples before committing. New media needs descriptive alt text and a still alternative when used on a website.
 
 The repository's MIT licence covers the skill instructions. The Fóir and Ormitar brand artwork is excluded, as explained in LICENSE. Do not commit credentials, private project configuration, or source copied from an unrelated repository.
