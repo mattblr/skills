@@ -1,0 +1,4 @@
+interface:
+  display_name: "rust"
+  short_description: "House rules for writing, testing and reviewing Rust"
+  default_prompt: "Use $rust to review this crate against the house rules, citing the rule or guideline behind each finding."

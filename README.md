@@ -22,6 +22,12 @@ It comes from work on large enterprise software projects. Your project's command
 
 [See the steps and installation instructions](turtleneck/README.md).
 
+## rust
+
+[rust](rust) gives your coding agent house rules for writing, testing and reviewing Rust. It covers the judgement calls the compiler and clippy can't check, such as whether an error is the right kind, whether output is deterministic and whether a test could ever fail. It builds on Microsoft's Pragmatic Rust Guidelines, linking each one so the agent reads only those that apply.
+
+[See what it covers and installation instructions](rust/README.md).
+
 ## Install a skill
 
 Clone this repository and copy the folder for the skill you want into your agent's skills directory. For Codex:

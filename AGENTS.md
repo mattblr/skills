@@ -10,6 +10,8 @@ For avatar-me, preserve the requirement for an independent component in the targ
 
 For turtleneck, keep the skill free of any one project's details. Commands, hosts, branch names and tracker ids belong in a project's own `turtleneck.md` profile. Keep all three parts and every step of the delivery loop in `SKILL.md`, with the detail in `references/`. `references/why.md` gives the failure behind each step. Describe where the steps came from in general terms only, and do not name a project in it.
 
+For rust, keep the skill free of any one project's details. Microsoft's Pragmatic Rust Guidelines are linked by ID, pinned to a commit, never copied in; `references/guidelines.md` says how to move the pin. Each house rule gives its reason.
+
 Use ordinary, specific language in documentation. Describe what a skill does and what the reader should do next. Keep inspiration credits and distinguish reconstructed design studies from recordings. Check local links, frontmatter, referenced files, and any runnable examples before committing. New media needs descriptive alt text and a still alternative when used on a website.
 
 The repository's MIT licence covers the skill instructions. The Fóir and Ormitar brand artwork is excluded, as explained in LICENSE. Do not commit credentials, private project configuration, or source copied from an unrelated repository.
