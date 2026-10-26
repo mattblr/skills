@@ -9,11 +9,11 @@ The agent loads the skill whenever it writes, changes, reviews or ports Rust, or
 1. **Lints are the floor.** One lint config for the workspace, narrow `#[expect]` overrides that give a reason, and restructuring along a real seam when a size limit fires.
 2. **Panics and errors.** The failure mode follows the cause, library errors are typed, boundaries decode strictly, and recursion over input has a depth limit.
 3. **Determinism.** Anything that reaches output has a defined order, and the outside world is passed in so tests control it.
-4. **The compiler carries the rule.** Enums instead of flags, no `bool` in a public signature, and exhaustive matches on your own enums.
-5. **Porting from another language.** Keep the domain and drop the old language's habits, with any byte-for-byte compatibility kept in one place.
-6. **Tests that can fail.** Write the failing test first, break the code to prove a test catches it, count what actually ran, and test the artifact users install.
-7. **Async.** No lock guard held across an `.await`, and public types that are `Send` and `Sync`, checked at compile time.
-8. **Dependencies, features and `unsafe`.** Dependencies declared once, additive features, and no `unsafe`.
+4. **The compiler carries the rule.** Enums instead of flags and sentinels, no `bool` in a public signature, privilege as a value only the deciding gate can make, and exhaustive matches on your own enums.
+5. **Porting from another language.** Keep the domain and drop the old language's habits, with any byte-for-byte compatibility kept in one place, and the known traps when matching Go.
+6. **Tests that can fail.** Write the failing test first, break the code to prove a test catches it, count what actually ran, test two paths against each other over a grid, and test the artifact users install.
+7. **Async.** No lock guard held across an `.await`, no second connection inside a transaction, and public types that are `Send` and `Sync`, checked at compile time.
+8. **Dependencies, features and `unsafe`.** Dependencies declared once, additive features with every combination checked, and no `unsafe`.
 9. **Docs, comments and logs.** Canonical doc sections, comments that give the reason rather than the history, and structured logs.
 
 It ends with a checklist the agent runs before it says it's done, and a way to review: cite the rule or guideline for each finding, and rank findings by consequence.
@@ -51,6 +51,6 @@ The skill works with agents that read `SKILL.md`. It has no runtime package to i
 
 ## Where it came from
 
-The rules come from porting a compiler and its runtime from Go to Rust with coding agents, with every output checked byte for byte against the original. They describe what kept that work correct.
+The rules come from porting a compiler and its runtime from Go to Rust with coding agents, with every output checked byte for byte against the original, and from planning Rust ports of large enterprise software projects. They describe what kept that work correct.
 
 The skill instructions are available under the [MIT licence](LICENSE). Microsoft's guidelines are linked, not copied, and keep their own MIT licence.
