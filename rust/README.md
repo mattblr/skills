@@ -10,10 +10,10 @@ The agent loads the skill whenever it writes, changes, reviews or ports Rust, or
 2. **Panics and errors.** The failure mode follows the cause, library errors are typed, boundaries decode strictly, and recursion over input has a depth limit.
 3. **Determinism.** Anything that reaches output has a defined order, and the outside world is passed in so tests control it.
 4. **The compiler carries the rule.** Enums instead of flags and sentinels, no `bool` in a public signature, privilege as a value only the deciding gate can make, and exhaustive matches on your own enums.
-5. **Porting from another language.** Keep the domain and drop the old language's habits, with any byte-for-byte compatibility kept in one place, and the known traps when matching Go.
+5. **Porting from another language.** Keep the domain and drop the old language's habits: match the original's behaviour and let the structure change, so the port doesn't need `unsafe` to copy the old memory model. Any byte-for-byte compatibility stays in one place, and the known traps when matching Go are listed.
 6. **Tests that can fail.** Write the failing test first, break the code to prove a test catches it, count what actually ran, test two paths against each other over a grid, and test the artifact users install.
 7. **Async.** No lock guard held across an `.await`, no second connection inside a transaction, and public types that are `Send` and `Sync`, checked at compile time.
-8. **Dependencies, features and `unsafe`.** Dependencies declared once, additive features with every combination checked, and no `unsafe`.
+8. **Dependencies, features and `unsafe`.** Dependencies declared once, additive features with every combination checked, and `unsafe` refused by the compiler. When a project truly needs it, it lives in one small crate whose safe functions are sound for every input.
 9. **Docs, comments and logs.** Canonical doc sections, comments that give the reason rather than the history, and structured logs.
 
 It ends with a checklist the agent runs before it says it's done, and a way to review: cite the rule or guideline for each finding, and rank findings by consequence.

@@ -110,6 +110,8 @@ Don't read the whole book. Open only the guidelines for the area you're working 
   - registries populated at init;
   - stringly typed options;
   - goroutine-per-thing concurrency.
+- **Match behaviour, and let the structure change.** Parity means the same outputs for the same inputs, checked by running both implementations over a corpus and diffing what they produce. It doesn't require the same functions, pointers or allocation pattern. A line-by-line translation carries the old language's memory model across, and Rust can then express it only with `unsafe`. When a ported function needs `unsafe` to keep its old shape, change the shape: own the data, borrow it, or keep an index into a `Vec` where the old code kept a raw pointer.
+  - Before porting code that relies on an invariant the old code kept in a comment or its author's head (who frees what, which pointer outlives which), write that invariant down as a type or an assertion. A translation checks each function on its own and misses invariants that span several.
 - **Contain byte-identical compatibility.** When output has to match the old implementation exactly, put the shims in one clearly named compat module or crate, and keep everything else idiomatic. Then the shims can be deleted in one place once parity is no longer required.
   - **Known traps when matching Go byte for byte:**
     - `sort.Slice` isn't stable, so ties come out in whatever order it leaves them. Give both sides a total order first.
@@ -117,6 +119,7 @@ Don't read the whole book. Open only the guidelines for the area you're working 
     - `encoding/json` escapes `<`, `>`, `&`, U+2028 and U+2029 by default; `serde_json` escapes none of them.
     - protojson varies its whitespace on purpose. Compare it by meaning, never byte for byte.
     - A hash over Go's "deterministic" protobuf encoding isn't canonical across implementations. Export golden vectors from Go for every stored format before switching.
+- **A port meets the old language at its edges.** When Rust sits behind a binding in another language, test the boundary with values written the way that language's users write them. Go marshals a nil slice or map as `null`, so a Go binding turns them into empty ones before sending, and its tests leave fields unset as well as using generated fixtures.
 - **Flag old bugs; don't silently copy or fix them.** When the old code has a bug or a non-best-practice pattern, record it where the repo records debt (its debt register or ticket).
   - A silent fix breaks parity without anyone noticing.
   - A silent copy carries the debt forward.
@@ -158,6 +161,7 @@ Don't read the whole book. Open only the guidelines for the area you're working 
     - A shared self-hosted runner, only under a hard memory cap on the mutants step: systemd's `MemoryMax` with `MemorySwapMax=0`, or a container's `--memory` equal to its `--memory-swap`. Without a cap, Linux's out-of-memory killer may thrash the host and kill other jobs before it reaches the runaway.
   - Keep `-j` at 1 or 2 and set a short `--timeout`, so a stuck mutant ends quickly.
   - `--in-diff` mutates every line the diff adds, and a moved file is all added lines. Moving a module mutates code that may never have been mutated, so expect misses in it that have nothing to do with the move.
+  - A missed mutant that can't change any output is an equivalent mutant. The code it touched is redundant, such as a guard another check already covers, so remove it; no test can fail it.
   - `--timeout` bounds only the tests. If a build script runs the code being mutated, a looping mutant hangs the build instead, and builds have no timeout by default, so set `--build-timeout` too: a few times the slowest cold build.
   - Locally, prove tests with plants instead. If the repo has no mutants job in CI, say so and ask before adding one; don't fall back to running it locally.
 
@@ -177,7 +181,12 @@ Don't read the whole book. Open only the guidelines for the area you're working 
 - **Features are additive** (M-FEATURES-ADDITIVE). CI checks each feature on its own.
   - When features select editions or tiers of a product, check every combination with `cargo hack --feature-powerset`, and give each tier its own schema and migration set from the first migration. Tools such as sqlx record a checksum for each applied migration, so splitting a set later means rewriting history on every database.
 - **Don't leak dependency types.** A published crate keeps third-party types out of its public API unless they earn their place (M-DONT-LEAK-TYPES).
-- **`unsafe` is forbidden workspace-wide.** If you think you need it, stop and ask rather than adding an exception.
+- **`unsafe` is forbidden, so the compiler holds the line.** It switches off the guarantees that are the reason to use Rust. An agent stuck on a borrow error, or translating code that used raw pointers freely, will reach for it to make the error go away. Set `unsafe_code = "deny"` in `[workspace.lints]` and `#![forbid(unsafe_code)]` at each crate root; a workspace-level `forbid` can't be lifted for one crate. When something truly needs unsafe, such as FFI to a C library or plain WebAssembly exports, ask first. Then:
+  - Put it in one small crate whose job is that boundary, and give the rest of the code safe types.
+  - Make every safe function over it sound for any input a caller can build, or mark it `unsafe fn`. A safe wrapper that can be misused is worse than an honest `unsafe`.
+  - Mark each item `#[expect(unsafe_code, reason = "…")]`, and turn on clippy's `undocumented_unsafe_blocks` and `multiple_unsafe_ops_per_block`, so each block does one thing and says why it's sound.
+  - Run the tests that reach it under Miri, where Miri can run them.
+  - Don't chase a smaller unsafe count for its own sake. Moving unsafe behind a wrapper that isn't sound lowers the count and adds undefined behaviour.
 
 ### 9. Docs, comments and logs
 
