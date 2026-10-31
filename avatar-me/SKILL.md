@@ -23,7 +23,7 @@ Start with a recognisable resting pose and a small set of states that the produc
 
 Suggest a few signature moves from [motion ideas](references/motion.md), adapted to the discovered geometry. Pick one main gesture. Keep idle motion sparse enough to sit next to text, and use larger reactions for deliberate events. Gaze can follow a nearby pointer with bounded travel; it should settle when the pointer leaves. Touch users need a useful resting character without cursor input.
 
-For overlapping parts, draw the back-to-front order and check both endpoints and the transition between them. Hidden companions must be concealed at rest. Separate transform wrappers for formation, local motion, and facial movement so one does not overwrite another. Keep all poses inside the allotted space unless the host explicitly provides a movement area.
+For overlapping parts, draw the back-to-front order and check both endpoints and the transition between them. Match interior geometry to each silhouette variant; an inset that fits a tall shape may escape a shorter one. Clip or mask interiors to their own part before composing the foreground. Hidden companions must be concealed at rest. Separate transform wrappers for formation, local motion, and facial movement so one does not overwrite another. Keep all poses inside the allotted space unless the host explicitly provides a movement area.
 
 ## Build it in the repository
 
@@ -39,4 +39,4 @@ Respect reduced-motion preferences and an explicit motion-off option. Preserve t
 
 Build a small preview with a seed input, several identities, state controls, and a still mode. Inspect it at the actual avatar size and at mascot size, against the app's backgrounds. Check clipping, overlaps, small-size legibility, repeated seeds, reduced motion, and pointer behaviour. For repeated SVG instances, keep mask and clip IDs unique without introducing hydration differences.
 
-Run checks appropriate to the implementation, including deterministic identity and state transitions where tests add confidence. Use real browser inspection if available. Report what was inspected and any unverified behaviour. Deliver the component, a usage example, and the reason for its signature gesture. Keep demo copy plain and specific.
+Run checks appropriate to the implementation, including deterministic identity and state transitions where tests add confidence. Use real browser inspection if available. Check the rendered animation timeline or visible movement, not only that keyframes exist. If motion should be apparent without interaction, provide an arrival gesture or sparse idle movement; a hover-only gesture will be absent on a touch screen. Verify reduced motion stops it and restore any temporary emulation afterward. Report what was inspected and any unverified behaviour. Deliver the component, a usage example, and the reason for its signature gesture. Keep demo copy plain and specific.
