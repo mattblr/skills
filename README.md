@@ -51,3 +51,35 @@ Or copy `avatar-me` into `.claude/skills/avatar-me` inside a project to share it
 
 
 Skill instructions are MIT licensed. The Fóir and Ormitar artwork illustrates the case study and remains brand material; see [LICENSE](LICENSE).
+
+## App delivery skills
+
+- [mobile-app-verification](mobile-app-verification/SKILL.md): Build and walk through a native Apple app with MobileBuildMCP, including adaptive and foldable layouts. Use for runtime verification and release evidence, not static code review alone.
+- [app-store-release](app-store-release/SKILL.md): Review an Apple app and prepare its App Store submission, metadata and verification evidence. Use for store readiness or submission work; submission itself requires user authorization.
+- [foir-billing](foir-billing/SKILL.md): Set up or verify Stripe web and RevenueCat native billing for a Fóir-backed app, with shared identity and server-enforced entitlements. Use for provider setup, purchase reconciliation and billing release checks.
+- [foir-go-live](foir-go-live/SKILL.md): Prepare and verify a Fóir app's dev-to-production cutover, including published-only hosting, drafts preview, identity, operations and rollback. Use for environment promotion and go-live checklists.
+
+Install these like the existing skills, replacing `foir-go-live` below with the
+folder you want. Codex:
+
+```sh
+mkdir -p ~/.codex/skills
+cp -R skills/foir-go-live ~/.codex/skills/foir-go-live
+```
+
+Invoke `$foir-go-live Prepare our production cutover and rollback checks`.
+Use `$mobile-app-verification Walk through our app on phone and Duo`,
+`$app-store-release Prepare our next submission`, or
+`$foir-billing Verify our shared web/native subscription grants` as appropriate.
+
+Claude Code:
+
+```sh
+mkdir -p ~/.claude/skills
+cp -R skills/foir-go-live ~/.claude/skills/foir-go-live
+```
+
+Invoke `/foir-go-live Prepare our production cutover and rollback checks`.
+The other entry points are `/mobile-app-verification`, `/app-store-release`,
+and `/foir-billing` with the same task descriptions above. Project-specific
+hosts, commands and authorization belong in the project's `turtleneck.md`.
