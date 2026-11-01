@@ -46,6 +46,14 @@ review notes, compliance answers and a concise go/no-go checklist. Never invent
 legal declarations, export-compliance answers, ratings or reviewer credentials.
 Ask only for owner facts unavailable from the project/dashboard.
 
+For any app that creates accounts, work through
+[account deletion](references/account-deletion.md). Verify the whole flow rather
+than accepting a settings button as evidence. Distinguish account closure,
+background data erasure, third-party token revocation and subscription
+cancellation. Report missing UGC safety controls as release gates even when the
+app's principal feature works. Inspect the app's own required-reason API usage;
+third-party privacy manifests do not cover the app's own calls.
+
 Upload and submission are distinct steps. Respect existing authorization; do
 all reversible preparation and show the concrete release before requesting any
 missing approval. Do not submit, release, accept agreements or change banking
