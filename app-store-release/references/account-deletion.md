@@ -19,6 +19,13 @@ API name or a support link.
 - Verify the authenticated self-service boundary. A failed/refused request must
   not clear the session or claim deletion. On success, revoke sessions and
   remove local tokens, private caches, push registrations and device notices.
+- Exercise in-flight session races: a refresh completing after sign-out or
+  deletion must not restore the old session, and its refusal must not clear a
+  replacement account. Bind queued credential lookup, response handling and
+  cleanup to the initiating session; do not let an earlier mutation acquire a
+  newly signed-in account's bearer. Verify late responses cannot repopulate a
+  cache shared with the replacement account. After accepted deletion, perform
+  local cleanup without depending on another call with the revoked session.
 - Trace ownership, not only profile rows: uploaded photo bytes, derived assets,
   notes, private settings and processor copies. Check other users' reposts,
   references and notifications cannot preserve the deleted person's content.
