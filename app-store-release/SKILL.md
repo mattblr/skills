@@ -54,6 +54,10 @@ cancellation. Report missing UGC safety controls as release gates even when the
 app's principal feature works. Inspect the app's own required-reason API usage;
 third-party privacy manifests do not cover the app's own calls.
 
+For public posts, photos, comments or profiles, work through
+[user-content safety](references/user-content-safety.md) and record runtime
+evidence for filtering, reports, blocks and operator actions.
+
 Upload and submission are distinct steps. Respect existing authorization; do
 all reversible preparation and show the concrete release before requesting any
 missing approval. Do not submit, release, accept agreements or change banking
