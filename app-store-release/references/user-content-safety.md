@@ -25,6 +25,19 @@ report receipt, blocking or an operational response process.
   Verify record access and file bytes separately, existing audience grants,
   paged references and later attempts to repost or widen an audience. Test races
   with publication; do not claim atomic enforcement from a sequential test.
+- Warm a successful anonymous/non-owner read before narrowing access, then
+  repeat the identical query and unsigned media URL afterward. Capture stale
+  and cache headers. A cache-busted or request-bypassed diagnostic does not prove
+  that ordinary visitors lose the warmed response. Verify record metadata and
+  bytes independently; neither substitutes for the other.
+- For resumed work, distinguish accepted dispatch from terminal completion.
+  Check that only the initiating user can observe a private run, with refusing
+  anonymous, other-user and operator-history controls. Preserve retry identity
+  and discard results after account changes.
+- Compare full fixture payloads before and after supposed partial/no-op writes.
+  A list becoming empty is not privacy evidence if a filter field was erased.
+  Check required fields and references, restore isolated fixtures from verified
+  snapshots, and avoid blind read/modify/write workarounds for concurrent data.
 - Keep moderation decisions attributable and reversible when appropriate.
   Approval of an old checked revision must not approve newer content. A hold's
   release need not republish content automatically. Account suspension, deletion
