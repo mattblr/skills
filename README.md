@@ -83,3 +83,27 @@ Invoke `/foir-go-live Prepare our production cutover and rollback checks`.
 The other entry points are `/mobile-app-verification`, `/app-store-release`,
 and `/foir-billing` with the same task descriptions above. Project-specific
 hosts, commands and authorization belong in the project's `turtleneck.md`.
+
+## Fóir app planning and building
+
+- [plan-foir-app](plan-foir-app/SKILL.md) maps a product-discovery brief onto the
+  current template, identifies what stays/changes and creates workstream tickets.
+- [build-foir-app](build-foir-app/SKILL.md) implements those tickets using Fóir's
+  native features while preserving iOS, web, subscriptions and embedded admin.
+
+Use the template's discovery skill first to establish the idea, users, journeys
+and commercial model. These skills consume that brief rather than guessing it.
+Install both for Codex from a clone of this repository:
+
+```sh
+cp -R skills/plan-foir-app skills/build-foir-app ~/.codex/skills/
+```
+
+For Claude Code:
+
+```sh
+cp -R skills/plan-foir-app skills/build-foir-app ~/.claude/skills/
+```
+
+Invoke `$plan-foir-app` then `$build-foir-app` in Codex, or `/plan-foir-app` then
+`/build-foir-app` in Claude Code, with the brief or planned ticket references.

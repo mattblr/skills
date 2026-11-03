@@ -11,6 +11,11 @@ and explicitly select environment/workspace/project/organization before writes.
 Use current Stripe and RevenueCat skills/docs when available. Do not create a
 second user pool or a frontend proxy with broader credentials.
 
+Preserve the template's native/web subscription integration, purchase/restore
+and shared server-enforced entitlements. Adapt its plans, prices, allowances
+and benefits to the product brief. A free launch can leave billing inactive
+without removing that foundation; framework changes require explicit scope.
+
 Fóir is the hosted managed backend. Billing operations contain product-specific
 provider integration and entitlement decisions, not app-owned metering,
 financial ledgers, reservation services, queues or identity/access-control

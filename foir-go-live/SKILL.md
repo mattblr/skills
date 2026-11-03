@@ -10,6 +10,11 @@ Record source/target environments and user authorization. Confirm OAuth standing
 and explicit workspace/project/organization before writes. Read served schemas;
 never derive production identifiers from dev credentials or browser storage.
 
+Preserve the template's iOS/web/subscription/embedded-console foundation and
+Fóir integrations. Promote the planned application-specific refactor, with only
+superseded domain code removed. Distinguish local cleanup from authorized
+migration of installed data. Do not discard framework support to pass a gate.
+
 Fóir is the managed backend. Promote app-specific logic and supported managed
 configuration; do not add app-owned metering, financial ledgers, reservation
 services, queues, identity or access-control infrastructure in operations or
