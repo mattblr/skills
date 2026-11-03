@@ -11,6 +11,19 @@ and explicitly select environment/workspace/project/organization before writes.
 Use current Stripe and RevenueCat skills/docs when available. Do not create a
 second user pool or a frontend proxy with broader credentials.
 
+Fóir is the hosted managed backend. Billing operations contain product-specific
+provider integration and entitlement decisions, not app-owned metering,
+financial ledgers, reservation services, queues or identity/access-control
+infrastructure. Fóir records are not a loophole for building those services.
+Use supported native limits and verify their exact accounting, failure and
+completed-success semantics before promising an allowance. Never infer those
+semantics from an execution-rate quota alone. Missing proof is a capability
+question, not proof the platform lacks it or permission to replace it.
+Discover the current [no-backend](https://docs.foir.dev/no-backend) and
+[app architecture](https://docs.foir.dev/guides/app-architecture) guides through
+Fóir's served documentation tools when choosing the integration contract.
+Local platform source alone does not establish deployed behavior.
+
 Map both providers to the verified app actor. Define a provider-neutral private
 subscription grant, its source/id, validity, revocation and quota relationship.
 Keep free allowances separate. Enforce access in signed operations using the
@@ -28,16 +41,18 @@ permissions. Preserve unrelated credentials when saving a form.
 Stripe: use the app's signed Checkout/Portal operations and configured product,
 price, currency, interval and return origins. Bind customer/subscription mapping
 to the verified actor, not a browser-supplied user ID. Validate webhook signature
-against raw bytes, persist deduplication/ordering state, fetch authoritative
-provider state, and reconcile grants idempotently. RevenueCat: identify the same
+against raw bytes, use supported native idempotency and event delivery, fetch
+authoritative provider state, and reconcile grants idempotently. Do not build a
+replacement webhook/event-processing service. RevenueCat: identify the same
 actor, verify active entitlements server-side and reconcile restore/renewal/
 expiration/refund/cancellation into the same grant mechanism.
 
-Prefer Fóir's supported awaited continuation/queue semantics for long work.
-Do not introduce an external queue before checking that contract. Never rely on
-an unobserved promise after returning. If a platform primitive is missing,
-document current behavior and intended replacement beside the adapter; do not
-promise that future native payments also replace app-specific quotas.
+Use Fóir's supported awaited execution and continuations for long work. Do not
+introduce another queue or an unobserved promise after returning. Read the
+template's maintained known-gaps inventory when starting from a template.
+Only while developing the template itself, update that inventory when a verified
+limitation changes. Customers consume it; they are not asked to build workarounds
+or maintain a gap register while setting up or developing their own app.
 
 Prove in an isolated sandbox: unpaid Checkout/Portal; simulated purchase;
 refresh/restore and shared web/native entitlement; partial/full refund;

@@ -10,6 +10,18 @@ Record source/target environments and user authorization. Confirm OAuth standing
 and explicit workspace/project/organization before writes. Read served schemas;
 never derive production identifiers from dev credentials or browser storage.
 
+Fóir is the managed backend. Promote app-specific logic and supported managed
+configuration; do not add app-owned metering, financial ledgers, reservation
+services, queues, identity or access-control infrastructure in operations or
+records to close a release gate. When starting from a template, consume its
+maintained known-gaps inventory and distinguish platform limitations from
+unverified integration. Maintaining that inventory belongs to development of
+the template itself, not to customers setting up or developing their own app.
+Discover the current [no-backend](https://docs.foir.dev/no-backend) and
+[app architecture](https://docs.foir.dev/guides/app-architecture) guides through
+Fóir's served documentation tools when choosing the integration contract.
+Local platform source alone does not establish deployed behavior.
+
 Make a concrete add → migrate → remove checklist before cutover:
 
 1. Inventory models, grants, generated clients, locales/design tokens, CMS
