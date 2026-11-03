@@ -53,6 +53,8 @@ template's maintained known-gaps inventory when starting from a template.
 Only while developing the template itself, update that inventory when a verified
 limitation changes. Customers consume it; they are not asked to build workarounds
 or maintain a gap register while setting up or developing their own app.
+Keep unresolved capability questions, integration work and verification evidence
+in the issue tracker, outside the customer-facing inventory and setup docs.
 
 Prove in an isolated sandbox: unpaid Checkout/Portal; simulated purchase;
 refresh/restore and shared web/native entitlement; partial/full refund;

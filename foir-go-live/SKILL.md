@@ -17,6 +17,9 @@ records to close a release gate. When starting from a template, consume its
 maintained known-gaps inventory and distinguish platform limitations from
 unverified integration. Maintaining that inventory belongs to development of
 the template itself, not to customers setting up or developing their own app.
+The inventory contains confirmed platform limitations only. Put unresolved
+questions, release gates and verification evidence in the issue tracker, not
+in customer setup documentation.
 Discover the current [no-backend](https://docs.foir.dev/no-backend) and
 [app architecture](https://docs.foir.dev/guides/app-architecture) guides through
 Fóir's served documentation tools when choosing the integration contract.
