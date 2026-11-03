@@ -70,6 +70,14 @@ count gateway acknowledgment alone as proof a consumer completed successfully.
 Use test transactions only within approved scope; hand off any action the tool's
 approval policy requires the user to perform.
 
+For a template that advertises subscriptions, billing is unfinished until the
+actual client purchase/restore and server-entitlement lifecycle pass acceptance.
+A disabled build, configured offering, local fixture or provider-only entitlement
+is not a completed integration. Missing app keys/grants and unconnected handlers
+are app/configuration work, not proof of a platform blocker. Report a genuine
+external dependency with evidence and impact; do not use it to silently disable
+promised features or call the release ready. The owner decides any scope change.
+
 Keep billing disabled by default until acceptance, production credentials,
 webhook routing and live activation are explicitly authorized. Provide exact
 rollback and leave existing subscriptions intact during hosting changes.

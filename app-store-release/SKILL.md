@@ -58,6 +58,15 @@ For public posts, photos, comments or profiles, work through
 [user-content safety](references/user-content-safety.md) and record runtime
 evidence for filtering, reports, blocks and operator actions.
 
+Do not present a release candidate or reusable template as complete while an
+advertised feature is unfinished. Disabled switches, placeholder unavailability,
+prepared code and local fixtures do not satisfy runtime/provider acceptance.
+Report genuine external blockers with reproducible evidence and scope impact;
+missing app credentials, grants or integration work are not automatically
+platform failures. Keep submission/publication stopped until acceptance passes
+or the owner explicitly decides the blocker's disposition. A known-gaps document
+is not a waiver and does not authorize hiding promised functionality.
+
 Upload and submission are distinct steps. Respect existing authorization; do
 all reversible preparation and show the concrete release before requesting any
 missing approval. Do not submit, release, accept agreements or change banking

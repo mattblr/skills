@@ -66,6 +66,13 @@ Make a concrete add → migrate → remove checklist before cutover:
    gone or follows the agreed redirect, and recheck auth, operation execution
    and webhook state on replacement hosts. Record evidence in the tracker.
 
+Do not promote or publish a template with unfinished advertised features.
+Complete their end-to-end acceptance first; disabling a switch, moving work to
+the tracker or listing a known gap is not completion. If an external dependency
+blocks acceptance, report its exact evidence and impact and keep release stopped
+until the owner explicitly decides its disposition. Separate missing app setup
+from a verified platform blocker. Do not invent a reduced product scope to ship.
+
 The release artifact should list completed checks, remaining gates, owner-only
 facts/actions and rollback commands/configuration. Do not declare live based on
 a successful build or HTTP 200 alone. Do not push, release stores, enable live

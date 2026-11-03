@@ -81,6 +81,14 @@ Record exact source/environment and evidence in the tracker. State any unrun
 device, provider, clean-install or deployed checks; do not call the app ready
 because compilation passes.
 
+The template must not be published with unfinished advertised functionality.
+Prepared code, passing builds, test doubles and disabled switches do not close
+feature acceptance. Complete the actual iOS/web/console and provider flows;
+for subscriptions prove client purchase/restore through server entitlements.
+Report genuine blockers with concrete evidence and affected acceptance, without
+misclassifying app/configuration defects. Keep release stopped unless the owner
+explicitly decides the blocker's disposition; never silently defer a feature.
+
 Finish each ticket with behavior changed, evidence, remaining dependencies and
 next planned work. Deployment, store submission, public publishing, paid calls,
 live billing, permission changes and destructive data actions require the scope
