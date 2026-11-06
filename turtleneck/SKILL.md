@@ -34,11 +34,11 @@ Do not start building until the tickets exist. A large change that goes straight
 Each step ends with a condition. Meet it before starting the next step, and say so when you cannot.
 
 1. Pick up. Read the ticket, its children and its newest comments. Claim it in the tracker before creating a branch. Work in a fresh worktree off the integration branch, and post what you measured before changing anything. Done when a start comment and a ground-truth comment are on the ticket.
-2. Build. Build the whole scope locally as commits, in the profile's dependency order, and regenerate derived code at each step. Done when every module you touched builds.
+2. Build. Build the whole scope locally as commits, in the profile's dependency order, and regenerate derived code at each step. While building, run only the fast check and the tests for what you are changing. The full set runs once, at the gate. Done when every module you touched builds.
 3. Prove. Give each test a positive control, because a check that finds nothing has to show that it looked. Then plant mistakes in the code your important tests protect and count how many are caught. Done when you can report N of M caught, with each survivor explained.
 4. Local smoke. Start the built artifact locally and drive the product as a user would, in the browser or in the app itself. Walk the paths that should succeed as well as the ones that should refuse. Done when you have seen each changed flow work and named anything you did not drive.
 5. Gate. Run the profile's full local mirror of CI once, on the exact tree that will land, and leave that tree alone while it runs. Done when it is green and you have named the CI jobs the mirror cannot run.
-6. Land. Make one landing per repository for the whole piece of work, by the route the profile gives. Done when the integration branch holds your change.
+6. Land. Make one landing per repository for the whole piece of work, by the route the profile gives. A push that starts a CI run counts as a landing, whichever branch it goes to. Done when the integration branch holds your change.
 7. Watch. The integration run starts when you land, so the change is not landed until you have read that run. Watch it in the background with a deadline, read every job, and confirm the deployed environment reports the version you landed. Done when every run is green and the version matches.
 8. Deployed smoke. Drive the same flows on the deployed environment, to cover what only it has, such as real third parties and the real edge. Done when an evidence comment is posted and the ticket is in its "landed, awaiting the owner" status.
 9. Owner smoke. Hand the owner a short numbered list of the flows worth a person's eye and every step you could not take yourself, with the test objects left ready. Done when the owner confirms, or reports what broke.
@@ -48,7 +48,9 @@ A fault found at any step sends the work back to Build, and every later step run
 
 If you have no way to drive a browser or the app, say so once and move every flow in steps 4 and 8 onto the owner's list. Reading the code for a flow does not count as seeing it work.
 
-[Deliver in detail](references/deliver.md) covers positive controls, planted mistakes, what a smoke record holds and the owner's list.
+When several agents work at once, each still lands a whole feature once: something another agent or a user takes as a whole, never each item on its list. Agents keep up with one another by merging the integration branch into their own and running the fast check, not by running the gate. Only a shared piece that another agent is waiting on lands early, alone and small.
+
+[Deliver in detail](references/deliver.md) covers positive controls, planted mistakes, what a smoke record holds, the owner's list and landing when several agents work at once.
 
 ## Track: keep the tracker true
 

@@ -16,6 +16,8 @@ Deployed smoke stayed in the loop after a sweep of 137 green packages was follow
 
 The rule of one landing per repository followed a feature that went out as eight pull requests, four of them stacked. The runs queued behind each other, and the contention produced failures that looked like faults in the code.
 
+The same rule was later broken without a single pull request. Several agents worked at once, and each pushed every finished item to a branch that ran the full gate. Each also linted every configuration and ran its whole suites before every commit. Gate runs rose from about 9 a day to about 40, with hours of them queued, and more than half of the local build time went on test and lint runs the gate repeated. The builds set the pace, not the work. The cheap inner loop and the feature as the unit of landing came from that.
+
 Shape came from a build that its owner stopped part way, asking for the RFC and the tickets first. As code alone, the work could not be tracked or reviewed as a plan.
 
 Two agents once started the same ticket, which is why a claim is made by status. The first had made a branch and left the ticket's status alone.

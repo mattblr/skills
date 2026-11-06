@@ -36,6 +36,7 @@ Landing order: <first> then <next> then <last>, and why.
 
 ## Commands
 - Build: <command per repository>
+- Inner loop: <the fast check and single-test commands used while building>
 - Regenerate derived code: <commands, and which step needs them>
 - Test database or fixtures: <how to build one from a branch>
 - Local stack: <how to start the built artifact with an explicit environment>

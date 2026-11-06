@@ -14,6 +14,8 @@ The ground-truth comment says what you measured, on which commit, and where it d
 
 Build the whole scope before landing any of it. A commit costs nothing and a landing costs a CI run.
 
+Keep the loop inside the work cheap. While building, run the compiler's check and the tests for what you are changing, nothing wider. Linting every configuration and running whole suites belong to the gate, once. A checklist that runs them before every commit spends most of the build time on checks the gate will repeat.
+
 Follow the profile's dependency order, and regenerate derived code where the project generates it. Hand edits to generated files are lost at the next regeneration.
 
 Build the correct solution now. Nobody schedules the change that would replace a stopgap.
@@ -67,6 +69,14 @@ A failure blamed on the environment needs evidence. Run the same check on an unt
 Land in dependency order, one landing per repository. A change that widens a contract ships the provider first, and a change that narrows one ships the consumers first. Where the pipeline can merge queued builds into one, wait for each deploy before the next landing.
 
 Use the route the profile gives. A pull request per change earns its wait when a reviewer or a preview environment is there to use it. Without either, it adds a CI run and nothing else.
+
+A push that starts a CI run is a landing, whatever the branch is called. Gating each item on a branch of its own costs what a pull request per item costs.
+
+### Several agents at once
+
+The unit each agent lands is a feature: something another agent or a user takes as a whole, such as a group of related endpoints or a family of background jobs, not each numbered item. An agent keeps up with the others by merging the integration branch into its own as often as it needs and running the fast check on the result. That keeps conflicts small without a CI run. A piece another agent is waiting on, such as a shared core or a contract change, lands early, alone and small. Keep those rare.
+
+When builds or CI set the pace instead of the work, count where the build time goes before adding agents or machines. More agents running the same checks only make the queue longer.
 
 ## Watch
 
